@@ -19,30 +19,16 @@ def ident(matrix):
     pass
 
 def matrix_mult(m1, m2):
-    if len(m1[0]) != len(m2):
-        pass
-    rows = []
-    for y in range(len(m1[0])):
-        row = []
-        for x in range(len(m1)):
-            row.append(m1[x][y])
-        rows.append(row)
-    ans = []
-    for row in range(len(rows)):
-        tempRow = []
+    ans = [[],[],[],[]]
+    for r in range(4):
+        for c in range(len(m2)):
+            entry = 0
+            for num in range(4):
+                entry += m1[r][num] * m2[num][c]
+            ans[r].append(entry)
+    for row in range(4):
         for col in range(len(m2)):
-            temp = 0
-            for num in range(len(rows[row])):
-                temp+=rows[row][num]*m2[col][num]
-            tempRow.append(temp)
-        ans.append(tempRow)
-    temp = []
-    for y in range(len(ans[0])):
-        row = []
-        for x in range(len(ans)):
-            row.append(ans[x][y])
-        temp.append(row)
-    print_matrix(temp)
+            m2[row][col] = ans[row][col]
     pass
 
 def new_matrix(rows = 4, cols = 4):
@@ -52,3 +38,4 @@ def new_matrix(rows = 4, cols = 4):
         for r in range( rows ):
             m[c].append( 0 )
     return m
+
