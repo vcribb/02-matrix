@@ -21,13 +21,14 @@ def ident(matrix):
 def matrix_mult(m1, m2):
     ans = [[],[],[],[]]
     for r in range(4):
-        for c in range(len(m2)):
+        for c in range(len(m2[0])):
             entry = 0
             for num in range(4):
                 entry += m1[r][num] * m2[num][c]
             ans[r].append(entry)
-    for row in range(4):
-        for col in range(len(m2)):
+    print_matrix(ans)
+    for row in range(len(ans)):
+        for col in range(len(ans[0])):
             m2[row][col] = ans[row][col]
     pass
 
